@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Address Locations</title>
+	 <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqZmj2LoHlCzooONUxrdiVSNIqqhdXVGc&sensor=false"></script>
+  <script type="text/javascript" src="./ui-bootstrap-tpls-0.11.0.js"></script>
+  <script type="text/javascript" src="./address.js"></script>
+  <script type="text/javascript" src="./addressFactory.js"></script>
+ 
+</head>
+<body data-ng-app="addressApp" data-ng-controller="addressController">
+ <div class="container-fluid" style="margin-top:2%;">
+ 	<div class="row">
+ 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+ 			<form class="form-inline" style="margin-bottom:2%;">
+        <div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search for a location" data-ng-change="addMarker(results)">
+        </div>
+    </form>
+ 		<table class="table table-bordered table-striped table-hover">
+ 		<thead>
+ 			<tr>
+ 				<td>Latitude</td>
+ 				<td>Longitude</td>
+ 				<td>Address</td>
+ 				<td>Ordered Item</td>
+ 			</tr>
+ 		</thead>
+ 	    <tbody>
+ 	    	<tr data-ng-repeat="data in data|filter:search as results">
+ 				<td>{{data.latitude}}</td>
+ 				<td>{{data.longitude}}</td>
+ 				<td>{{data.location}}</td>
+ 				<td>{{data.orderedItem}}</td>
+ 			</tr>
+ 	    </tbody>
+ 	</table>	
+ 	</div>
+ 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+ 		 <div id="map" style="width:100%;height:400px;"></div>
+ 	</div>
+ 	</div>
+ 	
+  </div>
+
+</body>
+</html>
